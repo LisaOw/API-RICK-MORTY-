@@ -1,3 +1,4 @@
+// https://www.freecodecamp.org/news/how-to-use-the-usestate-and-useeffect-hooks-in-your-project/
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import CharacterCard from './CharacterCard';
@@ -17,17 +18,18 @@ function CharacterList() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // https://learnersbucket.com/examples/javascript/detect-if-window-is-scrolled-to-the-bottom/
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2 && hasMore) {
         setPage((prevPage) => prevPage + 1);
       }
     };
-
+  // https://dev.to/samabaasi/mastering-useref-why-it-doesnt-trigger-re-renders-and-how-it-persists-across-re-renders-1l2b
     if (!initialRender.current) {
       fetchCharacters(page);
     } else {
       initialRender.current = false;
     }
-
+    // https://stackoverflow.com/questions/75775786/how-to-properly-add-window-scroll-event-listener-in-react-for-animating-an-eleme
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasMore, page]);

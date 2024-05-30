@@ -10,7 +10,6 @@ function CharacterCard({ character }) {
         </a>
         <div className="flex text-white sm:text-xl md:text-base xl:text-lg ">
             {character.status} - {character.species}
-          
         </div>
         <div className="text-gray-400 text-sm">
           <span>Last known location: </span>
